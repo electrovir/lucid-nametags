@@ -1,0 +1,28 @@
+<section class="inputs">
+  <input type="text" (input)="firstName = $event.target.value" placeholder="First name">
+  <input type="text" (input)="lastName = $event.target.value" placeholder="Last name">
+  <input type="text" (input)="jobTitle = $event.target.value" placeholder="Job title">
+  <input type="text" (input)="teamName = $event.target.value" placeholder="Team name (optional)">
+  <select (change)="fillColor = $event.target.value">
+    <option>Choose color</option>
+    <option value="#29AAE1">Lucid blue</option>
+    <option value="#FC8D2A">Lucidchart orange</option>
+    <option value="#8CBF3F">Lucidpress green</option>
+    <option value="#3D4752">Lucid blue steel</option>
+    <option value="#77818C">Lucid blue steel 2</option>
+    <option value="#2C84B5">Lucid blue dark</option>
+    <option value="CUSTOM">Custom...</option>
+  </select>
+  <input type="color" *ngIf="fillColor == 'CUSTOM'" (change)="customFillColor = $event.target.value">
+  <button (click)="print()">Print</button>
+</section>
+<section class="page">
+  <nametag-background [color]="fillColor == 'CUSTOM' ? customFillColor : fillColor"></nametag-background>
+  <div class="information">
+    <span class="name"><span class="first-name">{{firstName}}</span><span class="last-name">{{lastName}}</span></span>
+    <span class="position">
+      <span class="job-title">{{jobTitle}}</span>
+      <span class="team-name">{{teamName}}</span>
+    </span>
+  </div>
+</section>

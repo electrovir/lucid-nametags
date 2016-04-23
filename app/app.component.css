@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,300italic,400italic,600,600italic,700italic,800,800italic);
+
+:host {
+  min-width: 100%;
+  min-height: 100%;
+  display: inline-block;
+  background: url("/app/material_02.jpg") repeat;
+}
+
+.inputs {
+  text-align: center;
+  margin: 20px;
+}
+
+.page {
+  font-family: "Open Sans", sans-serif;
+  width: 8.5in;
+  height: 11in;
+  background-color: white;
+  box-shadow: 0 0 13px hsla(0, 0%, 0%, 0.5);
+  margin: 10px auto;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page nametag-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.information {
+  position: relative;
+  font-size: 0.667in;
+  line-height: 1;
+}
+
+.information .name {
+  display: block;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+.information .name .first-name {
+  font-weight: 700;
+}
+
+.information .name .last-name {
+  font-weight: 300;
+}
+
+.information .position {
+  font-size: 0.5625em;
+}
+
+.information .position .job-title {
+  font-style: italic;
+}
+
+.information .position .team-name {
+  font-size: 0.5625em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media print {
+  .inputs { display: none; }
+}
