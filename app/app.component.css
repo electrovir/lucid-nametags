@@ -33,16 +33,6 @@
   transform: translate(-50%, -50%);
 }
 
-.headshot {
-  position: absolute;
-  right: 0.75in;
-  bottom: 0;
-  height: 2.25in;
-  width: 2.25in;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 .information {
   position: relative;
   font-size: 0.5in;
@@ -80,6 +70,19 @@
   letter-spacing: 0.1em;
 }
 
+.headshot {
+  position: absolute;
+  right: 0.75in;
+  bottom: 0;
+  height: 2.25in;
+  width: 2.25in;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 @media print {
+  :host { background: none; }
   .inputs { display: none; }
+  .information { -webkit-print-color-adjust: exact; }
+  .headshot { -webkit-print-color-adjust: exact; }
 }

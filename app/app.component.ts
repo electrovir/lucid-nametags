@@ -41,6 +41,6 @@ export class AppComponent {
   }
 
   print() {
-    console.log('printing');
+    window.print();
   }
 }
