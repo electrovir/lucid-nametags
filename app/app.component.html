@@ -3,17 +3,10 @@
   <input type="text" (input)="lastName = $event.target.value" placeholder="Last name">
   <input type="text" (input)="jobTitle = $event.target.value" placeholder="Job title">
   <input type="text" (input)="teamName = $event.target.value" placeholder="Team name (optional)">
-  <select (change)="fillColor = $event.target.value">
-    <option>Choose color</option>
-    <option value="#29AAE1">Lucid blue</option>
-    <option value="#FC8D2A">Lucidchart orange</option>
-    <option value="#8CBF3F">Lucidpress green</option>
-    <option value="#3D4752">Lucid blue steel</option>
-    <option value="#77818C">Lucid blue steel 2</option>
-    <option value="#2C84B5">Lucid blue dark</option>
-    <option value="CUSTOM">Custom...</option>
+  <select [(ngModel)]="fillColor">
+    <option *ngFor="#fill of fillColors" [value]="fill.value">{{fill.name}}</option>
   </select>
-  <input type="color" *ngIf="fillColor == 'CUSTOM'" (change)="customFillColor = $event.target.value">
+  <input type="color" *ngIf="fillColor == 'CUSTOM'" [(ngModel)]="customFillColor">
   <button (click)="print()">Print</button>
 </section>
 <section class="page">
