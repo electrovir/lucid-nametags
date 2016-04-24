@@ -1,41 +1,94 @@
 import {Component} from 'angular2/core';
 import {Input} from 'angular2/core';
 import {OnInit} from 'angular2/core';
-import {ElementRef} from 'angular2/core';
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class Triangle {
+  constructor(p1, p2, p3, opacity) {
+    this.p1 = p1;
+    this.p2 = p2;
+    this.p3 = p3;
+    this.opacity = opacity;
+  }
+  formattedPoints() {
+    return `${this.p1.x},${this.p1.y} ${this.p2.x},${this.p2.y} ${this.p3.x},${this.p3.y}`
+  }
+}
 
 @Component({
   selector: 'nametag-background',
   templateUrl: './app/background.component.html',
 })
 export class BackgroundComponent {
-  @Input() color: string = '#14496A';
+  @Input() color: string;
 
-  minOpacityMultiplier: number = 0.25;
-  maxOpacityMultiplier: number = 0.55;
-
-  el: ElementRef;
-
-  constructor(el: ElementRef) {
-    this.el = el;
-  }
+  width: number;
+  height: number;
+  triangles: Triangle[];
 
   ngOnInit() {
-    var nodes = Array.prototype.slice.call(
-      this.el.nativeElement.querySelectorAll('polygon')
-    );
-    nodes.sort((a, b) => {
-      var abb = a.getBBox();
-      var bbb = b.getBBox();
-      return (bbb.x + bbb.y) - (abb.x + abb.y);
-    });
+    const dpi = 96;
+    this.width = 10.5 * dpi;
+    this.height = 13 * dpi;
+    const rows = 14;
+    const triangleHeight = this.height / rows;
+    const triangleWidth = triangleHeight * Math.sin(60 * Math.PI / 180);
+    const columns = Math.ceil(this.width / triangleWidth);
 
-    nodes.forEach((poly, i, rr) => {
-      var op = i * this.getRandomArbitrary(0.25, 0.95) / rr.length;
-      poly.style.opacity = op;
-    });
+    let allPoints: Point[] = [];
+
+    for (let i = 0; i < columns; i++) {
+      let columnPoints = [];
+      for (let j = 0; j < rows; j++) {
+        columnPoints.push(new Point(
+          i * triangleWidth,
+          i % 2 === 0 ? j * triangleHeight : j * triangleHeight + triangleHeight/2
+        ));
+      }
+      allPoints.push(columnPoints);
+    }
+
+    let allTriangles: Triangle[] = [];
+
+    const cells = (rows-2) + (columns-1);
+
+    function getRandomBucketed(buckets) {
+      return Math.floor(Math.random() * (buckets + 1)) / buckets;
+    }
+
+    for (let column = 0; column < allPoints.length; column++) {
+      for (let row = 0; row < allPoints[column].length-1; row++) {
+        if (allPoints[column-1]) {
+          allTriangles.push(
+            new Triangle(
+              allPoints[column][row],
+              allPoints[column-1][(column % 2 === 0) ? row : row+1],
+              allPoints[column][row+1],
+              (1 - ((column + row) / cells)) * getRandomBucketed(15);
+            )
+          );
+        }
+        if (allPoints[column+1]) {
+          allTriangles.push(
+            new Triangle(
+              allPoints[column][row],
+              allPoints[column+1][(column % 2 === 0) ? row : row+1],
+              allPoints[column][row+1],
+              (1 - ((column + row) / cells)) * getRandomBucketed(15);
+            )
+          );
+        }
+      }
+    }
+
+    this.triangles = allTriangles;
+
   }
 
-  getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-  }
 }
