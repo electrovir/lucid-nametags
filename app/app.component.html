@@ -11,11 +11,11 @@
 </section>
 <section class="page">
   <nametag-background [color]="fillColor == 'CUSTOM' ? customFillColor : fillColor"></nametag-background>
-  <div class="information">
-    <span class="name"><span class="first-name">{{firstName}}</span><span class="last-name">{{lastName}}</span></span>
+  <div *ngIf="hasInputData()" class="information">
+    <span class="name"><span *ngIf="!!firstName" class="first-name">{{firstName | trim}}</span><span *ngIf="!!lastName" class="last-name">{{lastName | trim}}</span></span>
     <span class="position">
-      <span class="job-title">{{jobTitle}}</span>
-      <span class="team-name">{{teamName}}</span>
+      <span *ngIf="!!jobTitle" class="job-title">{{jobTitle | trim}}</span>
+      <span *ngIf="!!teamName" class="team-name">[ {{teamName | trim}} ]</span>
     </span>
   </div>
 </section>

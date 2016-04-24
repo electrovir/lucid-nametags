@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {BackgroundComponent} from './background.component';
+import {TrimPipe} from './trim.pipe';
 
 class FillColor {
   constructor(value: string, name: string) {
@@ -13,6 +14,7 @@ class FillColor {
     templateUrl: './app/app.component.html',
     styleUrls: ['./app/app.component.css'],
     directives: [BackgroundComponent],
+    pipes: [TrimPipe],
 })
 export class AppComponent {
 
@@ -32,6 +34,10 @@ export class AppComponent {
   teamName: string;
   fillColor: string = this.fillColors[0].value;
   customFillColor: string;
+
+  hasInputData() {
+    return !!this.firstName || !!this.lastName || !! this.jobTitle || !! this.teamName;
+  }
 
   print() {
     console.log('printing');
