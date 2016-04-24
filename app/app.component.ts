@@ -34,9 +34,10 @@ export class AppComponent {
   teamName: string;
   fillColor: string = this.fillColors[0].value;
   customFillColor: string;
+  headshotUrl: string;
 
   hasInputData() {
-    return !!this.firstName || !!this.lastName || !! this.jobTitle || !! this.teamName;
+    return !!this.firstName || !!this.lastName || !! this.jobTitle || !! this.teamName || !!this.headshotUrl;
   }
 
   print() {

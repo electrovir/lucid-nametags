@@ -1,8 +1,9 @@
 <section class="inputs">
-  <input type="text" (input)="firstName = $event.target.value" placeholder="First name">
-  <input type="text" (input)="lastName = $event.target.value" placeholder="Last name">
-  <input type="text" (input)="jobTitle = $event.target.value" placeholder="Job title">
-  <input type="text" (input)="teamName = $event.target.value" placeholder="Team name (optional)">
+  <input type="text" [(ngModel)]="firstName" placeholder="First name">
+  <input type="text" [(ngModel)]="lastName" placeholder="Last name">
+  <input type="text" [(ngModel)]="jobTitle" placeholder="Job title">
+  <input type="text" [(ngModel)]="teamName" placeholder="Team name (optional)">
+  <input type="text" [(ngModel)]="headshotUrl" placeholder="Headshot URL (optional)">
   <select [(ngModel)]="fillColor">
     <option *ngFor="#fill of fillColors" [value]="fill.value">{{fill.name}}</option>
   </select>
@@ -17,5 +18,6 @@
       <span *ngIf="!!jobTitle" class="job-title">{{jobTitle | trim}}</span>
       <span *ngIf="!!teamName" class="team-name">[ {{teamName | trim}} ]</span>
     </span>
+    <div *ngIf="!!headshotUrl" [style.backgroundImage]="'url(' + headshotUrl + ')'" class="headshot"></div>
   </div>
 </section>
