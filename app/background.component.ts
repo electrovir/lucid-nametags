@@ -3,19 +3,11 @@ import {Input} from 'angular2/core';
 import {OnInit} from 'angular2/core';
 
 class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
+  constructor(public x: number, public y: number) {}
 }
 
 class Triangle {
-  constructor(p1, p2, p3, opacity) {
-    this.p1 = p1;
-    this.p2 = p2;
-    this.p3 = p3;
-    this.opacity = opacity;
-  }
+  constructor(public p1: Point, public p2: Point, public p3: Point, public opacity: number) {}
   formattedPoints() {
     return `${this.p1.x},${this.p1.y} ${this.p2.x},${this.p2.y} ${this.p3.x},${this.p3.y}`
   }
@@ -41,7 +33,7 @@ export class BackgroundComponent {
     const triangleWidth = triangleHeight * Math.sin(60 * Math.PI / 180);
     const columns = Math.ceil(this.width / triangleWidth);
 
-    let allPoints: Point[] = [];
+    let allPoints: Point[][] = [];
 
     for (let i = 0; i < columns; i++) {
       let columnPoints = [];
@@ -70,7 +62,7 @@ export class BackgroundComponent {
               allPoints[column][row],
               allPoints[column-1][(column % 2 === 0) ? row : row+1],
               allPoints[column][row+1],
-              (1 - ((column + row) / cells)) * getRandomBucketed(15);
+              (1 - ((column + row) / cells)) * getRandomBucketed(15)
             )
           );
         }
@@ -80,7 +72,7 @@ export class BackgroundComponent {
               allPoints[column][row],
               allPoints[column+1][(column % 2 === 0) ? row : row+1],
               allPoints[column][row+1],
-              (1 - ((column + row) / cells)) * getRandomBucketed(15);
+              (1 - ((column + row) / cells)) * getRandomBucketed(15)
             )
           );
         }

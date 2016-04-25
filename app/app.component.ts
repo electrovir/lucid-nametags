@@ -3,10 +3,7 @@ import {BackgroundComponent} from './background.component';
 import {TrimPipe} from './trim.pipe';
 
 class FillColor {
-  constructor(value: string, name: string) {
-    this.value = value;
-    this.name = name;
-  }
+  constructor(public value: string, public name: string) {}
 }
 
 @Component({
