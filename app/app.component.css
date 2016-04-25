@@ -4,7 +4,7 @@
   min-width: 100%;
   min-height: 100%;
   display: inline-block;
-  background: url("/app/material_02.jpg") repeat;
+  background: url("app/material_02.jpg") repeat;
 }
 
 .inputs {
