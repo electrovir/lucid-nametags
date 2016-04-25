@@ -4,7 +4,7 @@
   min-width: 100%;
   min-height: 100%;
   display: inline-block;
-  background: url("app/material_02.jpg") repeat;
+  background: radial-gradient(ellipse at center, hsl(211, 0%, 51%) 0%, hsl(211, 0%, 28%) 100%);
 }
 
 .inputs {
