@@ -26,6 +26,18 @@
   justify-content: center;
 }
 
+.page::after {
+  content: "";
+  position: absolute;
+  top: 33%;
+  right: 0;
+  bottom: 33%;
+  left: 0;
+  z-index: 10;
+  border-top: 2px dashed hsla(0, 0%, 0%, 0.25);
+  border-bottom: 2px dashed hsla(0, 0%, 0%, 0.25);
+}
+
 .page nametag-background {
   position: absolute;
   top: 50%;
@@ -85,4 +97,5 @@
   .inputs { display: none; }
   .information { -webkit-print-color-adjust: exact; }
   .headshot { -webkit-print-color-adjust: exact; }
+  .page::after { display: none; }
 }
