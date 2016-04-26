@@ -1,0 +1,23 @@
+<section class="inputs">
+  <input type="text" [(ngModel)]="firstName" placeholder="First name">
+  <input type="text" [(ngModel)]="lastName" placeholder="Last name">
+  <input type="text" [(ngModel)]="jobTitle" placeholder="Job title">
+  <input type="text" [(ngModel)]="teamName" placeholder="Team name (optional)">
+  <input type="text" [(ngModel)]="headshotUrl" placeholder="Headshot URL (optional)">
+  <select [(ngModel)]="fillColor">
+    <option *ngFor="#fill of fillColors" [value]="fill.value">{{fill.name}}</option>
+  </select>
+  <input type="color" *ngIf="fillColor == 'CUSTOM'" [(ngModel)]="customFillColor">
+  <button (click)="print()">Print</button>
+</section>
+<section class="page">
+  <nametag-background [color]="fillColor == 'CUSTOM' ? customFillColor : fillColor"></nametag-background>
+  <div *ngIf="hasInputData()" class="information">
+    <span class="name"><span *ngIf="!!firstName" class="first-name">{{firstName | trim}}</span><span *ngIf="!!lastName" class="last-name">{{lastName | trim}}</span></span>
+    <span class="position">
+      <span *ngIf="!!jobTitle" class="job-title">{{jobTitle | trim}}</span>
+      <span *ngIf="!!teamName" class="team-name">[ {{teamName | trim}} ]</span>
+    </span>
+    <div *ngIf="!!headshotUrl" [style.backgroundImage]="'url(' + headshotUrl + ')'" class="headshot"></div>
+  </div>
+</section>

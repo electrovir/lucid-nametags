@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,300italic,400italic,600,600italic,700italic,800,800italic);
+
+:host {
+  min-width: 100%;
+  min-height: 100%;
+  display: inline-block;
+  background: radial-gradient(ellipse at center, hsl(211, 0%, 51%) 0%, hsl(211, 0%, 28%) 100%);
+}
+
+.inputs {
+  text-align: center;
+  margin: 20px;
+}
+
+.page {
+  font-family: "Open Sans", sans-serif;
+  width: 8.5in;
+  height: 11in;
+  background-color: white;
+  box-shadow: 0 0 13px hsla(0, 0%, 0%, 0.5);
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  top: 33%;
+  right: 0;
+  bottom: 33%;
+  left: 0;
+  z-index: 10;
+  border-top: 2px dashed hsla(0, 0%, 0%, 0.25);
+  border-bottom: 2px dashed hsla(0, 0%, 0%, 0.25);
+}
+
+.page nametag-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.information {
+  position: relative;
+  font-size: 0.5in;
+  line-height: 1.2;
+  background: linear-gradient(to right, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.6));
+  padding: 0.25in 0 0.33in 0.75in;
+}
+
+.information .name {
+  display: block;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+.information .name .first-name {
+  font-weight: 700;
+}
+
+.information .name .last-name {
+  font-weight: 300;
+}
+
+.information .position {
+  font-size: 0.5625em;
+}
+
+.information .position .job-title {
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.information .position .team-name {
+  font-size: 0.5625em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.headshot {
+  position: absolute;
+  right: 0.75in;
+  bottom: 0;
+  height: 2.25in;
+  width: 2.25in;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media print {
+  :host { background: none; }
+  .inputs { display: none; }
+  .information { -webkit-print-color-adjust: exact; }
+  .headshot { -webkit-print-color-adjust: exact; }
+  .page::after { display: none; }
+}
