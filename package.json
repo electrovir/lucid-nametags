@@ -2,10 +2,8 @@
   "name": "lucid-nametags",
   "version": "0.0.1",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
+    "start": "gulp serve",
+    "dist": "gulp build",
     "typings": "typings",
     "postinstall": "typings install"
   },
@@ -19,8 +17,11 @@
     "zone.js": "0.6.10"
   },
   "devDependencies": {
-    "concurrently": "^2.0.0",
-    "lite-server": "^2.2.0",
+    "browser-sync": "^2.10.0",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.8.0",
+    "tsconfig-glob": "^0.3.3",
     "typescript": "^1.8.10",
     "typings":"^0.7.12"
   }

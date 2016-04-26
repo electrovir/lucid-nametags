@@ -1,5 +1,3 @@
 typings
 node_modules
-**/*npm-debug.log.*
-*.js
-*.js.map
+dist
