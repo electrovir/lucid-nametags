@@ -4,8 +4,7 @@
   "scripts": {
     "start": "gulp serve",
     "dist": "gulp build",
-    "typings": "typings",
-    "postinstall": "typings install"
+    "clean": "gulp clean"
   },
   "license": "ISC",
   "dependencies": {
@@ -20,9 +19,6 @@
     "browser-sync": "^2.10.0",
     "del": "^2.1.0",
     "gulp": "^3.9.0",
-    "gulp-typescript": "^2.8.0",
-    "tsconfig-glob": "^0.3.3",
-    "typescript": "^1.8.10",
-    "typings":"^0.7.12"
+    "gulp-typescript": "^2.8.0"
   }
 }
