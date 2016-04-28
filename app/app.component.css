@@ -97,5 +97,9 @@
   .inputs { display: none; }
   .information { -webkit-print-color-adjust: exact; }
   .headshot { -webkit-print-color-adjust: exact; }
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
   .page::after { display: none; }
 }
